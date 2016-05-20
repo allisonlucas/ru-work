@@ -1,0 +1,133 @@
+.body-style {
+    max-width: 960px;
+}
+
+/*Format navigation bar: inline, highlight on hover*/
+
+.nav-bar {
+    width: 100%;
+    font-size: 0;
+    text-align: center;
+    border: 0;
+    padding: 0;
+    max-width: 960px;
+}
+
+.nav-bar ul {
+    text-align: center;
+    width: 100%;
+    position: relative;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    background-color: salmon;
+    border-radius: 5px;
+    max-width: 960px;
+}
+
+.nav-bar li {
+    width: 20%;
+    display: inline-block;
+}
+
+.nav-bar a {
+    width: 100%;
+    text-align: center;
+    position: relative;
+    font-size: 16px;
+    display: inline-block;
+    padding: 12px 0;
+    color: white;
+    text-decoration: none;
+    border: 0;
+    margin: 0;
+}
+
+/*Round only the outside corners*/
+
+.nav-bar li:first-child a {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.nav-bar li:last-child a {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+/*Highlight on hover*/
+
+.nav-bar a:hover {
+    background-color: yellow;
+}
+
+.p-style {
+    padding: 10px;
+}
+
+/*Make img gallery images inline*/
+
+.img-gallery {
+    width: 100%;
+    max-width: 960px;
+    border-radius: 5px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.img-gallery img {
+    width: 24%;
+    border-radius: 5px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.lg-img img {
+    /* Make sure lg img is never larger than its container */
+    max-width: 960px;
+    width: 960px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+/*At sub-960px width, the navigation bar and main content should be padded away from the edge of the browser */
+
+@media(max-width: 1000px) {
+    .body-style {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+@media(max-width: 1008px) {
+    .lg-img img {
+        width: 100%;
+    }
+}
+
+/*At the proper point (when items start to stack), collapse the image gallery so the items are now full width and stack vertically*/
+
+@media(max-width: 600px) {
+    .img-gallery, 
+    .img-gallery img {
+        display: block;
+        min-width: 100px;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+/*At the proper point (when items start to stack), collapse the main navigation so the items are now full width and stack vertically*/
+
+@media(max-width: 500px) {
+    .nav-bar li {
+        display: block;
+        border-radius: 5px;
+        width: 100%;
+    }
+    
+    .nav-bar a {
+        border-radius: 5px;
+        width: 100%;
+    }
+}
