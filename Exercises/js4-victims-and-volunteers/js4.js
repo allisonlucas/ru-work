@@ -1,4 +1,3 @@
-
 // Prompt for victims & save name, number, and street address
 
 var victimsNum = prompt('How many disaster relief vicitms are you submitting?')
