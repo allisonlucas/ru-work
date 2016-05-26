@@ -1,5 +1,6 @@
 body {
     font-family: helvetica;
+    margin: 0;
 }
 
 h1 {
@@ -17,13 +18,26 @@ img {
 }
 
 .small-header {
-    font-size: 14px;
+    font-size: 18px;
+    font-weight: bold;
     color: black;
+}
+
+.small-header p {
+    margin: 0;
+    padding: 3px;
 }
 
 .inline p {
     display: inline-block;
     margin-right: 25px;
     width: 75px;
+}
+
+.small-header input {
+    font-family: helvetica;
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
 }
 
