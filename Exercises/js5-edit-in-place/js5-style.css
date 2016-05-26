@@ -29,9 +29,12 @@ img {
 }
 
 .inline p {
-    display: inline-block;
-    margin-right: 25px;
-    width: 75px;
+    width: 126px;
+    padding: 3px;
+}
+
+.inline {
+        display: inline-block;
 }
 
 .small-header input {
@@ -39,5 +42,16 @@ img {
     font-size: 18px;
     font-weight: bold;
     color: black;
+}
+
+.inline p input {
+    font-family: helvetica;
+    display: inline-block;
+    width: 126px;
+}
+
+.inline input {
+    font-size: 12px;
+    color: #7f8c8d;
 }
 
