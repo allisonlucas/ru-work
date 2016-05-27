@@ -34,7 +34,7 @@ img {
 .job-title p,
 .company p {
     width: 126px;
-    padding: 3px;
+    padding: 4px;
 }
 
 .first-name,
@@ -47,6 +47,10 @@ img {
 .city p {
     clear: left;
     display: inline;
+}
+
+.city {
+    height: 14px;
 }
 
 .small-header input {
@@ -63,6 +67,18 @@ img {
     font-family: helvetica;
     display: inline-block;
     width: 126px;
+}
+
+.city p input {
+    font-family: helvetica;
+    width: 126px;
+}
+
+.city input {
+    font-size: 12px;
+    color: #7f8c8d;
+    margin: 0;
+    margin-top: -4px;
 }
 
 .first-name input,
