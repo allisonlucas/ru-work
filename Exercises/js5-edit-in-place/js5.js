@@ -8,15 +8,26 @@ username.addEventListener("click", function(){
     usernameHeaderDiv.appendChild(newUserDiv);
 });
 
-var inlineDiv = document.querySelectorAll('.inline')[0];
-var firstName = document.querySelector('.inline p');
+var firstNameDiv = document.querySelectorAll('.first-name')[0];
+var firstName = document.querySelector('.first-name p');
 
 firstName.addEventListener("click", function(){
     // firstName.style = "visibility: hidden";
     firstName.style = "display: none";
     var newFirstDiv = document.createElement('div');
     newFirstDiv.innerHTML = '<input type="text" onblur="if(value=="") value = "First name" onfocus="if(value=="First name") value = """/>';
-    inlineDiv.appendChild(newFirstDiv);
+    firstNameDiv.appendChild(newFirstDiv);
+});
+
+var lastNameDiv = document.querySelectorAll('.last-name')[0];
+var lastName = document.querySelector('.last-name p');
+
+lastName.addEventListener("click", function(){
+    // firstName.style = "visibility: hidden";
+    lastName.style = "display: none";
+    var newLastDiv = document.createElement('div');
+    newLastDiv.innerHTML = '<input type="text" onblur="if(value=="") value = "Last name" onfocus="if(value=="Last name") value = """/>';
+    lastNameDiv.appendChild(newLastDiv);
 });
 
 

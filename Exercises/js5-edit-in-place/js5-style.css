@@ -9,7 +9,7 @@ h1 {
 
 img {
     float: left;
-    margin: 0 25px 0px 15px;
+    margin: 0 25px 100px 15px;
 }
 
 .profile-info {
@@ -28,13 +28,25 @@ img {
     padding: 3px;
 }
 
-.inline p {
+.first-name p,
+.last-name p,
+.city p,
+.job-title p,
+.company p {
     width: 126px;
     padding: 3px;
 }
 
-.inline {
-        display: inline-block;
+.first-name,
+.last-name,
+.job-title,
+.company {
+    display: inline-block;
+}
+
+.city p {
+    clear: left;
+    display: inline;
 }
 
 .small-header input {
@@ -44,14 +56,21 @@ img {
     color: black;
 }
 
-.inline p input {
+.first-name p input,
+.last-name p input,
+.job-title p input,
+.company p input {
     font-family: helvetica;
     display: inline-block;
     width: 126px;
 }
 
-.inline input {
+.first-name input,
+.last-name input,
+.job-title input,
+.company input {
     font-size: 12px;
     color: #7f8c8d;
+    margin: 12px 0;
 }
 
