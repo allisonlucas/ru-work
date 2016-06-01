@@ -84,6 +84,8 @@ function turnPink() {
         var val = confirm('Would you like to visit the Google site?')
         if (val == false) {
             event.preventDefault()
+            // Remove link from the dom when user chooses cancel
+            event.target.remove()
         }
     }
 }
