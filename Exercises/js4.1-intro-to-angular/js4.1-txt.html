@@ -15,11 +15,14 @@
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular.js"></script>
       
+      <!-- Link to my own CSS file -->
+      <link rel="stylesheet" href="js4.1-style.css" type="text/css" />
+      
       <!-- Link to my own JS file -->
       <script type="text/javascript" src="js4.1.js"></script>
 
   </head>
-  <body>
+  <body ng-controller="pop-up as pUp">
     <div ng-controller="buttonClick as btnClick">
       <h1 ng-show="btnClick.show">Ta-da!!!</h1>
       <!--<button ng-click='btnClick.buttonClick()'>Click here</button>-->
@@ -43,6 +46,16 @@
       <h1>Mouse over the below paragraph to see it turn pink<span ng-show="trnPnk.bang3">!</span></h1>
       <p ng-mouseenter="trnPnk.myfunc3($event)" ng-style="{'color': trnPnk.color}" ng-mouseleave="trnPnk.onLeave3($event)">When a link is clicked, confirm that the user wants to navigate to that url. If the user clicks OK, allow the default behavior of the link to be executed. If the user clicks cancel, cancel the default browser behavior by calling event.preventDefault() on the event object.</p>
     </div>
+    
+    <div>
+      <button class= "bigButton" ng-click='pUp.myfuncOpen()'>Click here</button>
+      <div class = "popUp-div" ng-show="pUp.show">
+        <h1>Hello</h1>
+        <p>This is a pop-up!</p>
+        <button class="closeButton" ng-click='pUp.myfuncClose()'>Click here to Close</button>
+      </div>
+    </div>
+    
   </body>
 </html>
 

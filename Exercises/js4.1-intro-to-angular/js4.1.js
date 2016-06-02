@@ -2,6 +2,7 @@ angular.module('button', [])
     .controller('buttonClick', buttonClick)
     .controller('listReveal', listReveal)
     .controller('turnPink', turnPink)
+    .controller('pop-up', popUp)
         
 // function buttonClick() {
 //     var btn = this;
@@ -89,5 +90,20 @@ function turnPink() {
         }
     }
 }
+
+// Create pop-up
+function popUp() {
+    var pUp = this
+    pUp.show = false
+    pUp.myfuncOpen = function(){
+        pUp.show = true
+    }
+    pUp.myfuncClose = function(){
+        pUp.show=false
+    }
+    
+}
+
+
 
 
