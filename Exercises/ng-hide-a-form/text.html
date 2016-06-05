@@ -21,7 +21,8 @@
 
   </head>
   <body ng-controller="formCtrl as fCtrl">
-    <form ng-submit="fCtrl.submit()">
+    
+    <form ng-show="fCtrl.show" ng-submit="fCtrl.submit()" class="form">
         <h3>Fill out your profile info below</h3>
         <div class="form-fields">
             <label>Name</label>
@@ -41,7 +42,11 @@
         </div>
         <input type="submit" id="submit" value="Submit" />
     </form>
+
+    <button ng-click="fCtrl.showFunc()">{{fCtrl.button}}</button>
+    
     <hr>
+    
     <form class="form-inline">
         <h3>Profile</h3>
         <div class="profile-info">
