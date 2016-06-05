@@ -15,3 +15,7 @@ form {
     clear: left;
     width: 300px;
 }
+
+#bookInput {
+    display: inline;
+}

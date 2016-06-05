@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app="myCtrl">
   <head>
     <meta charset="utf-8">
     <title>Hide-A-Form</title>
@@ -20,18 +20,35 @@
       <script type="text/javascript" src="script.js"></script>
 
   </head>
-  <body>
-    <form>
-        <div class="icon-image">
-            <img class="img" src="http://www.factzoo.com/sites/all/img/birds/two-blue-footed-boobies.jpg"></img>
-        </div>
+  <body ng-controller="formCtrl as fCtrl">
+    <form ng-submit="fCtrl.submit()">
+        <h3>Fill out your profile info below</h3>
         <div class="form-fields">
             <label>Name</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Full name">
+            <input type="text" class="form-control" ng-model="fCtrl.text" name="text" placeholder="Full name">
+            <input type="submit" id="submit" value="Submit" />
         </div>
         <div class = "form-fields">
             <label>Bio</label>
             <textarea class="form-control" rows="3" placeholder="Write your bio here"></textarea>
+        </div>
+        <div class = "form-fields">
+            <label>Favorite books</label>
+            <textarea class="form-control" rows="3" placeholder="Write your favorite books here"></textarea>
+        </div>
+        <div class = "form-fields">
+            <label>Favorite JS libraries</label>
+            <textarea class="form-control" rows="3" placeholder="Write your favorite JS libraries here"></textarea>
+        </div>
+    </form>
+    <hr>
+    <form>
+        <h3>Profile</h3>
+        <div class="icon-image">
+            <img class="img" src="http://www.factzoo.com/sites/all/img/birds/two-blue-footed-boobies.jpg"></img>
+        </div>
+        <div>
+            <p>{{fCtrl.formArr[0]}}</p>
         </div>
     </form>
   </body>
