@@ -25,30 +25,39 @@
         <h3>Fill out your profile info below</h3>
         <div class="form-fields">
             <label>Name</label>
-            <input type="text" class="form-control" ng-model="fCtrl.text" name="text" placeholder="Full name">
-            <input type="submit" id="submit" value="Submit" />
+            <input type="text" class="form-control" ng-model="fCtrl.name" name="name" placeholder="Full name">
         </div>
         <div class = "form-fields">
             <label>Bio</label>
-            <textarea class="form-control" rows="3" placeholder="Write your bio here"></textarea>
+            <textarea class="form-control" rows="3" ng-model="fCtrl.bio" name="bio" placeholder="Write your bio here"></textarea>
         </div>
         <div class = "form-fields">
             <label>Favorite books</label>
-            <textarea class="form-control" rows="3" placeholder="Write your favorite books here"></textarea>
+            <textarea class="form-control" rows="3" ng-model="fCtrl.books" name="books" placeholder="Write your favorite books here"></textarea>
         </div>
         <div class = "form-fields">
             <label>Favorite JS libraries</label>
-            <textarea class="form-control" rows="3" placeholder="Write your favorite JS libraries here"></textarea>
+            <textarea class="form-control" rows="3" ng-model="fCtrl.libraries" name="libraries" placeholder="Write your favorite JS libraries here"></textarea>
         </div>
+        <input type="submit" id="submit" value="Submit" />
     </form>
     <hr>
-    <form>
+    <form class="form-inline">
         <h3>Profile</h3>
-        <div class="icon-image">
-            <img class="img" src="http://www.factzoo.com/sites/all/img/birds/two-blue-footed-boobies.jpg"></img>
+        <div class="profile-info">
+            <h4>{{fCtrl.formArr[0]}}</h4>
         </div>
-        <div>
-            <p>{{fCtrl.formArr[0]}}</p>
+        <div class="icon-image">
+            <img class="img-circle" src="http://www.factzoo.com/sites/all/img/birds/two-blue-footed-boobies.jpg"></img>
+        </div>
+        <div class="profile-info">
+            <p>{{fCtrl.formArr[1]}}</p>
+        </div>
+        <div class="profile-info">
+            <p>{{fCtrl.formArr[2]}}</p>
+        </div>
+        <div class="profile-info">
+            <p>{{fCtrl.formArr[3]}}</p>
         </div>
     </form>
   </body>
