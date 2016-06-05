@@ -22,25 +22,24 @@
   </head>
   <body ng-controller="formCtrl as fCtrl">
     
-    <form ng-show="fCtrl.show" ng-submit="fCtrl.submit()" class="form">
+    <form ng-show="fCtrl.show" class="form">
         <h3>Fill out your profile info below</h3>
         <div class="form-fields">
             <label>Name</label>
-            <input type="text" class="form-control" ng-model="fCtrl.name" name="name" placeholder="Full name">
+            <input type="text" class="form-control" ng-model="fCtrl.name" ng-model-options="{updateOn: 'blur'}" ng-change="fCtrl.changeName()" name="name" placeholder="Full name">
         </div>
         <div class = "form-fields">
             <label>Bio</label>
-            <textarea class="form-control" rows="3" ng-model="fCtrl.bio" name="bio" placeholder="Write your bio here"></textarea>
+            <textarea class="form-control" rows="3" ng-model="fCtrl.bio" ng-model-options="{updateOn: 'blur'}" ng-change="fCtrl.changeBio()" name="bio" placeholder="Write your bio here"></textarea>
         </div>
         <div class = "form-fields">
             <label>Favorite books</label>
-            <textarea class="form-control" rows="3" ng-model="fCtrl.books" name="books" placeholder="Write your favorite books here"></textarea>
+            <textarea class="form-control" rows="3" ng-model="fCtrl.books" ng-model-options="{updateOn: 'blur'}" ng-change="fCtrl.changeBooks()" name="books" placeholder="Write your favorite books here"></textarea>
         </div>
         <div class = "form-fields">
             <label>Favorite JS libraries</label>
-            <textarea class="form-control" rows="3" ng-model="fCtrl.libraries" name="libraries" placeholder="Write your favorite JS libraries here"></textarea>
+            <textarea class="form-control" rows="3" ng-model="fCtrl.libraries" ng-model-options="{updateOn: 'blur'}" ng-change="fCtrl.changeLibraries()" name="libraries" placeholder="Write your favorite JS libraries here"></textarea>
         </div>
-        <input type="submit" id="submit" value="Submit" />
     </form>
 
     <button ng-click="fCtrl.showFunc()">{{fCtrl.button}}</button>
