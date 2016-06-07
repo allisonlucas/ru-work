@@ -1,0 +1,28 @@
+
+form {
+    margin: 15px 15px;
+}
+
+.img-circle {
+    width: 125px;
+}
+
+.icon-image {
+    float: left;
+    padding: 15px;
+}
+
+.form-fields {
+    clear: left;
+    width: 300px;
+}
+
+#bookInput {
+    display: inline;
+}
+
+.profile-info {
+    margin: 0 15px;
+    padding: 0 15px;
+    clear: left;
+}
