@@ -10,3 +10,8 @@
 /*  margin: 1px;*/
 /*  color: white;*/
 /*}*/
+
+.area {
+    fill: lightsteelblue;
+    stroke-width: 0;
+}
