@@ -1,3 +1,6 @@
+// -- Temp/Humidity graph starts here -- //
+
+// Array of data
 var lineData = [
   {
   x: 1,
@@ -193,23 +196,26 @@ var vis = d3.select('#visualisation'),
       bottom: 20,
       left: 50
     },
+    // Set the x-range based on margins and data
     xRange = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([d3.min(lineData, function(d) {
       return (d.x);
     }), d3.max(lineData, function(d) {
       return (d.x);
     })]),
+    // Set the y-range based on margins and data
     yRange = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([d3.min(lineData, function(d) {
       return Math.min(d.y - 20, d.z - 20, d.a - 20, d.b - 20);
     }), d3.max(lineData, function(d) {
       return Math.max(d.y + 20, d.z + 20, d.a + 20, d.b + 20);
     })]),
+    // Format the axes
     xAxis = d3.svg.axis()
       .scale(xRange)
-      .tickSize(3)
+      .tickSize(2)
       .tickSubdivide(true),
     yAxis = d3.svg.axis()
       .scale(yRange)
-      .tickSize(3)
+      .tickSize(2)
       .orient('left')
       .tickSubdivide(true);
 
@@ -223,6 +229,7 @@ vis.append('svg:g')
   .attr('transform', 'translate(' + (MARGINS.left) + ',0)')
   .call(yAxis);
   
+// Plot the temp line & append it
 var lineFunc = d3.svg.line()
   .x(function(d) {
     return xRange(d.x);
@@ -238,6 +245,7 @@ var lineFunc = d3.svg.line()
   .attr('stroke-width', 2)
   .attr('fill', 'none');
   
+// Plot the humidity line & append it
 var lineFunc2 = d3.svg.line()
   .x(function(d) {
     return xRange(d.x);
@@ -253,6 +261,7 @@ var lineFunc2 = d3.svg.line()
   .attr('stroke-width', 2)
   .attr('fill', 'none');
   
+// Plot the ideal-temp-min line & append it
 var lineFunc3 = d3.svg.line()
   .x(function(d) {
     return xRange(d.x);
@@ -265,10 +274,11 @@ var lineFunc3 = d3.svg.line()
   vis.append('svg:path')
   .attr('d', lineFunc3(lineData))
   .attr('stroke', 'green')
-  .attr('stroke-width', 2)
+  .attr('stroke-width', 0)
   .attr('opacity', 0.5)
   .attr('fill', 'none');
   
+// Plot the ideal-temp-max line & append it
 var lineFunc4 = d3.svg.line()
   .x(function(d) {
     return xRange(d.x);
@@ -281,10 +291,11 @@ var lineFunc4 = d3.svg.line()
   vis.append('svg:path')
   .attr('d', lineFunc4(lineData))
   .attr('stroke', 'green')
-  .attr('stroke-width', 2)
+  .attr('stroke-width', 0)
   .attr('opacity', 0.5)
   .attr('fill', 'none');
   
+// Plot the area between the ideal max and min & append it
 var area = d3.svg.area()
   .x(function(d) { 
     return xRange(d.x); 
@@ -302,3 +313,22 @@ var area = d3.svg.area()
   .attr('d', area)
   .attr('opacity', 0.5);
   
+angular.module('myCtrl', [])
+  .controller('chart', chart)
+  
+function chart() {
+  var c = this;
+
+  c.tempInput = function() {
+    if (c.temp === null || c.temp === '' || c.date === null || c.date === '') {
+        alert('Please enter the day of the month as a single number and a valid temperature.')
+    } else {
+        c.lineData.push({
+        x: c.date,
+        y: c.temp
+        })
+        c.date = ''
+        c.temp = ''
+    }
+  }
+}
