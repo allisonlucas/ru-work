@@ -1,4 +1,39 @@
+.graph {
+    margin: 25px 25px;
+    padding: 25px 25px;
+    width: 500px;
+}
+
+.form-control {
+    width: 55px;
+}
+
+.btn {
+    background-color: black;
+    color: white;
+}
+
 .area {
     fill: green;
     stroke-width: 0;
 }
+
+.axis text {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.legend {
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+rect {
+    stroke-width: 2;
+  }

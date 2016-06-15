@@ -25,25 +25,50 @@
     </head>
     
     <body ng-controller = "chart as c">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque at libero gravida, pharetra neque venenatis, tristique metus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Praesent tincidunt, dolor ut volutpat sodales, ligula est consequat odio, id fringilla lacus neque at dui. Phasellus nec ex porta, semper urna ac, congue ligula. Curabitur sed eros ac ante vehicula venenatis. Etiam eget enim eu sapien sodales placerat. Quisque bibendum, ipsum nec pellentesque mattis, enim augue varius dolor, at bibendum justo urna sit amet tortor. Duis pretium risus tincidunt pulvinar interdum. Nam pharetra bibendum augue. Aenean et nunc sed elit pretium pellentesque vel quis libero. Quisque feugiat, metus sed condimentum iaculis, justo nulla elementum risus, vitae venenatis dolor leo maximus erat. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam consequat dui ac pulvinar congue. Curabitur dolor lacus, molestie ac pulvinar quis, tincidunt eu dui. Donec interdum, turpis id lacinia semper, ipsum lacus varius mauris, nec pretium turpis mauris non enim.</p>
-        <p>Cras rhoncus consectetur sem, eget dignissim turpis tempor ut. Curabitur mattis est eget diam tempor, quis vehicula purus lobortis. Nam hendrerit ex leo, at venenatis augue aliquam id. Aenean diam purus, consectetur tincidunt lorem vel, imperdiet rhoncus mauris. Vivamus mi neque, lacinia sit amet felis a, imperdiet malesuada lacus. Nullam eu mauris metus. Cras eget accumsan lorem, vel interdum purus. Curabitur nec pretium tellus. Fusce facilisis rutrum dolor vel molestie. Vestibulum leo orci, lacinia at ex a, fermentum tempor ligula. Sed id felis risus. Nam ac elementum orci. Maecenas accumsan facilisis ligula, vitae auctor nulla condimentum vel. Phasellus sed tincidunt lectus. Sed eu congue augue.</p>
-        <p>Vestibulum quis dolor nulla. Vivamus mattis vestibulum hendrerit. Proin at est tortor. Maecenas feugiat tincidunt erat, vitae gravida metus scelerisque vel. Nam pellentesque leo nunc, non varius eros scelerisque ac. Ut quis nisl non ligula faucibus vestibulum sed a massa. Mauris justo odio, posuere id orci eu, finibus suscipit mauris. Aenean sollicitudin magna egestas bibendum porttitor. Donec in tincidunt quam, eu malesuada mi. Donec tempus diam risus, sed maximus ex facilisis ac. Etiam sed ipsum eget velit venenatis ornare. Vestibulum accumsan mauris et justo mollis interdum. In hac habitasse platea dictumst. Suspendisse at sollicitudin arcu. Aliquam convallis interdum euismod.</p>
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">CompostIT</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#">Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="#">FAQ</a>
+                        </li>
+                        <li>
+                            <a href="#">Profile</a>
+                        </li>
+                        <li>
+                            <a href="#">Help</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+        </nav>
         
-        <div>
+        <div class="graph">
         <svg id="visualisation" width="500" height="250"></svg>
         
         <form ng-submit="c.submit()" class="form">
         <h3>Enter your data below</h3>
         <div class="form-fields">
-            <label>Date</label>
-            <input type="text" class="form-control" ng-model="c.date" name="date" placeholder="Enter the day of the month here">
+            <label>Day of the month</label>
+            <input type="text" class="form-control" ng-model="c.date" name="day">
         </div>
         <div class = "form-fields">
-            <label>Temperature</label>
-            <input type="text" class="form-control" ng-model="c.temp" name="temp" placeholder="Enter temperature here"><p>degrees Farenheit</p>
+            <label>Temperature (F)</label>
+            <input type="text" class="form-control" ng-model="c.temp" name="temp">
+        </div>
+        <div class = "form-fields">
+            <label>Humidity (%)</label>
+            <input type="text" class="form-control" ng-model="c.humidity" name="humidity">
         </div>
         <div>
-        <button type="submit">Submit Data</button>
+        <button type="submit" class="btn">Submit Data</button>
         </div>
     </form>
         </div>
