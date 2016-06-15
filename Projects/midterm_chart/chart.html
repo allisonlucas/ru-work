@@ -24,7 +24,8 @@
         
     </head>
     
-    <body ng-controller = "chart as c">
+    <body ng-controller="chart as c">
+        
         <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -50,22 +51,21 @@
             
         </nav>
         
-        <div class="graph">
-        <svg id="visualisation" width="500" height="250"></svg>
-        
-        <form ng-submit="c.submit()" class="form">
+        <!--<svg id="visualisation" width="500" height="250"></svg>-->
+
+        <div id="graph" style="width:500px; height:250px;"></div>
+        <div id="timeline" style="width:500px; height:50px;"></div>
+        <div class="svg-div"><svg id="donut"></svg></div>
+        <div>
+        <form class="form" ng-submit="c.submit()">
         <h3>Enter your data below</h3>
         <div class="form-fields">
-            <label>Day of the month</label>
-            <input type="text" class="form-control" ng-model="c.date" name="day">
+            <label>Approximate weight added</label>
+            <input type="text" class="form-control" ng-model="c.data.value" name="weight">
         </div>
         <div class = "form-fields">
-            <label>Temperature (F)</label>
-            <input type="text" class="form-control" ng-model="c.temp" name="temp">
-        </div>
-        <div class = "form-fields">
-            <label>Humidity (%)</label>
-            <input type="text" class="form-control" ng-model="c.humidity" name="humidity">
+            <label>Type of input</label>
+            <input type="text" class="form-control" ng-model="c.data.label" name="type">
         </div>
         <div>
         <button type="submit" class="btn">Submit Data</button>

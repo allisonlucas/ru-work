@@ -1,8 +1,42 @@
-.graph {
-    margin: 25px 25px;
-    padding: 25px 25px;
-    width: 500px;
+.svg-div {
+    margin: 25px;
 }
+
+#donut {
+    float: left;
+}
+
+/*.donut {*/
+/*    margin-top: 200px;*/
+/*}*/
+
+path {
+	stroke: steelblue;
+	stroke-width: 1;
+	fill: none;
+}
+
+#graph {
+    margin: 50px;
+}
+
+#timeline,
+.axis line {
+    fill: none;
+    stroke: black;
+    shape-rendering: crispEdges;
+}
+
+.axis text {
+    font-family: sans-serif;
+    font-size: 11px;
+}
+
+/*.graph {*/
+/*    margin: 25px 25px;*/
+/*    padding: 25px 25px;*/
+/*    width: 500px;*/
+/*}*/
 
 .form-control {
     width: 55px;
@@ -13,27 +47,27 @@
     color: white;
 }
 
-.area {
-    fill: green;
-    stroke-width: 0;
-}
+/*.area {*/
+/*    fill: green;*/
+/*    stroke-width: 0;*/
+/*}*/
 
-.axis text {
-  font: 10px sans-serif;
-}
+/*.axis text {*/
+/*  font: 10px sans-serif;*/
+/*}*/
 
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
+/*.axis path,*/
+/*.axis line {*/
+/*  fill: none;*/
+/*  stroke: #000;*/
+/*  shape-rendering: crispEdges;*/
+/*}*/
 
-.legend {
-    font-size: 14px;
-    font-weight: bold;
-  }
+/*.legend {*/
+/*    font-size: 14px;*/
+/*    font-weight: bold;*/
+/*  }*/
 
-rect {
-    stroke-width: 2;
-  }
+/*rect {*/
+/*    stroke-width: 2;*/
+/*  }*/
