@@ -1,192 +1,4 @@
 // -- Temp/Humidity graph starts here -- //
-
-// Array of data
-// var lineData = [
-//   {
-//   x: 1,
-//   y: 142,
-//   z: 75,
-//   a: 140,
-//   b: 160
-// }, {
-//   x: 2,
-//   y: 146,
-//   z: 76,
-//   a: 140,
-//   b: 160
-// }, {
-//   x: 3,
-//   y: 147,
-//   z: 76,
-//   a: 140,
-//   b: 160
-// }, {
-//   x: 4,
-//   y: 145,
-//   z: 75,
-//   a: 140,
-//   b: 160
-// }, {
-//   x: 5,
-//   y: 143,
-//   z: 73,
-//   a: 140,
-//   b: 160
-// }, {
-//   x: 6,
-//   y: 140,
-//   z: 73,
-//   a: 140,
-//   b: 160
-// }, {
-//   x: 7,
-//   y: 141,
-//   z: 71,
-//   a: 140,
-//   b: 160
-// }, {
-//   x: 8,
-//   y: 143,
-//   z: 72,
-//   a: 140,
-//   b: 160
-// }, {
-//   x: 9,
-//   y: 144,
-//   z: 72,
-//   a: 140,
-//   b: 160
-// },
-//   {
-//   x: 10,
-//   y: 142,
-//   z: 78,
-//   a: 140,
-//   b: 160
-// }, {
-//   x: 11,
-//   y: 142,
-//   z: 78,
-//   a: 140,
-//   b: 160
-// },
-// {
-//   x: 12,
-//   y: 146,
-//   z: 77,
-//   a: 140,
-//   b: 160
-// }, {
-//   x: 13,
-//   y: 147,
-//   z: 77,
-//   a: 140,
-//   b: 160
-// }, {
-//   x: 14,
-//   y: 145,
-//   z: 76,
-//   a: 140,
-//   b: 160
-// }, {
-//   x: 15,
-//   y: 143,
-//   z: 77,
-//   a: 140,
-//   b: 160
-// }, {
-//   x: 16,
-//   y: 140,
-//   z: 75,
-//   a: 140,
-//   b: 160
-// }, {
-//   x: 17,
-//   y: 141,
-//   z: 75,
-//   a: 140,
-//   b: 160
-// }, {
-//   x: 18,
-//   y: 143,
-//   z: 74,
-//   a: 140,
-//   b: 160
-// }, {
-//   x: 19,
-//   y: 144,
-//   z: 74,
-//   a: 140,
-//   b: 160
-// }, {
-//   x: 20,
-//   y: 142,
-//   z: 73,
-//   a: 140,
-//   b: 160
-// }, {
-//   x: 21,
-//   y: 142,
-//   z: 73,
-//   a: 140,
-//   b: 160
-// }, {
-//   x: 22,
-//   y: 146,
-//   z: 71,
-//   a: 140,
-//   b: 160
-// }, {
-//   x: 23,
-//   y: 147,
-//   z: 68,
-//   a: 140,
-//   b: 160
-// }, {
-//   x: 24,
-//   y: 145,
-//   z: 75,
-//   a: 140,
-//   b: 160
-// }, {
-//   x: 25,
-//   y: 143,
-//   z: 75,
-//   a: 140,
-//   b: 160
-// }, {
-//   x: 26,
-//   y: 140,
-//   z: 76,
-//   a: 140,
-//   b: 160
-// }, {
-//   x: 27,
-//   y: 141,
-//   z: 76,
-//   a: 140,
-//   b: 160
-// }, {
-//   x: 28,
-//   y: 143,
-//   z: 77,
-//   a: 140,
-//   b: 160
-// }, {
-//   x: 29,
-//   y: 144,
-//   z: 75,
-//   a: 140,
-//   b: 160
-// }, {
-//   x: 30,
-//   y: 144,
-//   z: 76,
-//   a: 140,
-//   b: 160
-// }
-// ];
-
 var lineData = 
 {
   day : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
@@ -194,14 +6,7 @@ var lineData =
   humidity : [72, 74, 75, 77, 78, 85, 81, 81, 80, 79, 77, 75, 73, 72],
   idealTempMin : [140],
   idealTempMax : [160]
-}
-;
-
-console.log(lineData.day)
-console.log(lineData.day[0])
-console.log(Math.min.apply(null, lineData.day))
-console.log(Math.max.apply(null, lineData.day))
-console.log(lineData.day.length)
+};
 
 var vis = d3.select('#visualisation'),
     WIDTH = 500,
@@ -212,11 +17,11 @@ var vis = d3.select('#visualisation'),
       bottom: 30,
       left: 30
     },
+    
     // Set the x-range based on margins and data
-    xRange = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([Math.min.apply(null, lineData.day), Math.max.apply(null, lineData.day)]),
-    // Set the y-range based on margins and data
-    yRange = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([Math.min((Math.min.apply(null, lineData.temp) - 20), (Math.min.apply(null, lineData.humidity) - 20), (Math.min.apply(null, lineData.idealTempMin) - 20), (Math.min.apply(null, lineData.idealTempMax) - 20)), Math.max((Math.max.apply(null, lineData.temp) + 20), (Math.min.apply(null, lineData.humidity) + 20), (Math.min.apply(null, lineData.idealTempMin) + 20), (Math.min.apply(null, lineData.idealTempMax) + 20))]),
-    // Format the axes
+    xRange = d3.scale.linear().domain([d3.min(lineData.day), d3.max(lineData.day)]).range([MARGINS.left, WIDTH - MARGINS.right])
+    yRange = d3.scale.linear().domain([d3.min([d3.min(lineData.temp), d3.min(lineData.humidity), d3.min(lineData.idealTempMin)]) - 20, d3.max([d3.max(lineData.temp), d3.max(lineData.humidity), d3.max(lineData.idealTempMax)]) + 20]).range([HEIGHT - MARGINS.top, MARGINS.bottom])
+    
     xAxis = d3.svg.axis()
       .scale(xRange)
       .tickSize(2)
@@ -242,29 +47,38 @@ vis.append('svg:g')
   .attr('transform', 'translate(' + (MARGINS.left) + ',0)')
   .call(yAxis)
   
+// Add the ideal temp area rectangle
+vis.append('svg:rect')
+  .attr('x', xRange(lineData.day[0]))
+  .attr('y', yRange(lineData.idealTempMax[0]))
+  .attr('width', xRange(d3.max(lineData.day)))
+  .attr('height', (yRange(lineData.idealTempMin[0]) - yRange(lineData.idealTempMax[0])))
+  .attr('class', 'area')
+  .attr('opacity', 0.5)
+  
 // Plot the temp line & append it
 var lineFunc = d3.svg.line()
-  .x(function(d) {
-    return xRange(lineData.day);
+  .x(function(d,i) {
+    return xRange(lineData.day[i]);
   })
-  .y(function(d) {
-    return yRange(lineData.temp);
+  .y(function(d,i) {
+    return yRange(lineData.temp[i]);
   })
   .interpolate('linear');
   
   vis.append('svg:path')
-  .attr('d', lineFunc(lineData))
+  .attr('d', lineFunc(lineData.day))
   .attr('stroke', 'blue')
   .attr('stroke-width', 2)
   .attr('fill', 'none');
   
 // Plot the humidity line & append it
 var lineFunc2 = d3.svg.line()
-  .x(function(d) {
-    return xRange(lineData.day[d]);
+  .x(function(d,i) {
+    return xRange(lineData.day[i]);
   })
-  .y(function(d) {
-    return yRange(lineData.humidity[d]);
+  .y(function(d,i) {
+    return yRange(lineData.humidity[i]);
   })
   .interpolate('linear');
   
@@ -274,81 +88,29 @@ var lineFunc2 = d3.svg.line()
   .attr('stroke-width', 2)
   .attr('fill', 'none');
   
-// Plot the ideal-temp-min line & append it
-var lineFunc3 = d3.svg.line()
-  .x(function(d) {
-    return xRange(lineData.day[d]);
-  })
-  .y(function(d) {
-    return yRange(lineData.idealTempMin[d]);
-  })
-  .interpolate('linear');
-  
-  vis.append('svg:path')
-  .attr('d', lineFunc3(lineData.day))
-  .attr('stroke', 'green')
-  .attr('stroke-width', 0)
-  .attr('opacity', 0.5)
-  .attr('fill', 'none');
-  
-// Plot the ideal-temp-max line & append it
-var lineFunc4 = d3.svg.line()
-  .x(function(d) {
-    return xRange(lineData.day[d]);
-  })
-  .y(function(d) {
-    return yRange(lineData.idealTempMax[d]);
-  })
-  .interpolate('linear');
-  
-  vis.append('svg:path')
-  .attr('d', lineFunc4(lineData.day))
-  .attr('stroke', 'green')
-  .attr('stroke-width', 0)
-  .attr('opacity', 0.5)
-  .attr('fill', 'none');
-  
-// Plot the area between the ideal max and min & append it
-var area = d3.svg.area()
-  .x(function(d) { 
-    return xRange(lineData.day[d]); 
-  })
-  .y0(function(d) { 
-    return yRange(lineData.idealTempMin[d]); 
-  })
-  .y1(function(d) { 
-    return yRange(lineData.idealTempMax[d]); 
-  });
-  
-  vis.append('svg:path')
-  .datum(lineData.day)
-  .attr('class', 'area')
-  .attr('d', area)
-  .attr('opacity', 0.5);
-  
-// Add a legend
-var colors = {  
-  0 : ["Temperature", "blue"],
-  1 : ["Humidity", "purple"],
-  2 : ["Ideal Temperature Range", "green"]
-};
+// // Add a legend
+// var colors = {  
+//   0 : ["Temperature", "blue"],
+//   1 : ["Humidity", "purple"],
+//   2 : ["Ideal Temperature Range", "green"]
+// };
 
-var legend = vis.append('svg:g')
-  .attr("class", "legend")
-  .attr("x", 300)
-  .attr("y", 300)
-  .attr("height", 100)
-  .attr("width", 100);
+// var legend = vis.append('svg:g')
+//   .attr("class", "legend")
+//   .attr("x", 300)
+//   .attr("y", 300)
+//   .attr("height", 100)
+//   .attr("width", 100);
   
-  legend.selectAll('rect')
-      .data(lineData)
-      .enter()
-      .append("rect")
-      .attr("x", 300)
-      .attr("y", function(d, i){ return i * 15;})
-      .attr("width", 10)
-      .attr("height", 10)
-      .style("fill", 'green');
+//   legend.selectAll('rect')
+//       .data(lineData)
+//       .enter()
+//       .append("rect")
+//       .attr("x", 300)
+//       .attr("y", function(d, i){ return i * 15;})
+//       .attr("width", 10)
+//       .attr("height", 10)
+//       .style("fill", 'green');
     
 // ANGULAR CODE HERE  
 angular.module('myCtrl', [])
