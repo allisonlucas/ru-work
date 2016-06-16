@@ -104,7 +104,8 @@
         var greenTotal = c.weightObj.green.reduce(function (a, b) {
           return a + b
         })
-        var percentBrown = (brownTotal / (greenTotal + brownTotal)) * 10
+        console.log("Green Total: ", greenTotal)
+        var percentBrown = (brownTotal / (greenTotal + brownTotal)) * 100
         console.log("percent brown: ", percentBrown)
         c.data[1].value.splice(0, 1, percentBrown)
         console.log(c.data[1].value)
@@ -117,15 +118,22 @@
         var brownTotal = c.weightObj.brown.reduce(function (a, b) {
           return a + b
         })
-        var percentGreen = (greenTotal / (greenTotal + brownTotal)) * 10
+        var percentGreen = (greenTotal / (greenTotal + brownTotal)) * 100
         console.log("Percent Green: ", percentGreen)
         c.data[0].value.splice(0, 1, percentGreen)
+        
       }
+      c.weight = ''
+      c.color = ''
+      
+      d3.select('#donut').remove()
       drawDoughnut()
     }
     function drawDoughnut() {
-      
-    var vis = d3.select('#donut')
+
+    var vis = d3.select(".svg-div")
+      .append("svg")
+      .attr("id", "donut")
       .data([c.data])
       .attr('width', w)
       .attr('height', h)
