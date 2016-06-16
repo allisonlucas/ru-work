@@ -10,11 +10,19 @@
     float: left;
 }
 
-#graph {
+.temp-graph {
+    width: 600;
 	stroke: steelblue;
 	stroke-width: 1;
 	fill: none;
 	margin: 50px;
+	padding: 20px;
+}
+
+.x-axis text,
+.y-axis text {
+    stroke: none;
+    fill: steelblue
 }
 
 h3 {
