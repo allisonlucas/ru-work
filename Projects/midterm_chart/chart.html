@@ -54,24 +54,25 @@
   <main>
     <!-- DISPLAY GRAPH IN D3 -->
     <div id="graph" style="width:500px; height:250px;"></div>
-    <!--  DISPLAY DOUGHNUT WITH D3-->
+    <!--  DISPLAY DONUT WITH D3 -->
     <div class="svg-div">
     </div>
+    <!--  FORM TO UPDATE DONUT -->
     <form class="form" ng-submit="c.submit()">
-      <h3>Enter your data below</h3>
+      <h3>Material added:</h3>
       <div class="form-fields">
-        <label>Enter weight:</label>
+        <label>Weight:</label>
         <input type="number" class="form-control" ng-model="c.weight" name="weight">
       </div>
       <div class="form-fields">
-        <label for="color">Select Type:</label>
+        <label for="color">Type:</label>
         <select class="form-control" id="color" ng-model="c.color">
           <option>Brown</option>
           <option>Green</option>
         </select>
       </div>
       <div class="form-fields">
-        <button type="submit" class="btn">Submit Data</button>
+        <button type="submit" class="btn">Update</button>
       </div>
     </form>
   </main>

@@ -2,72 +2,40 @@
     margin: 25px;
 }
 
+#donut text {
+    padding: 10px;
+}
+
 #donut {
     float: left;
 }
 
-/*.donut {*/
-/*    margin-top: 200px;*/
-/*}*/
-
-path {
+#graph {
 	stroke: steelblue;
 	stroke-width: 1;
 	fill: none;
+	margin: 50px;
 }
 
-#graph {
-    margin: 50px;
+h3 {
+    font-size: 18px;
 }
 
-#timeline,
-.axis line {
-    fill: none;
-    stroke: black;
-    shape-rendering: crispEdges;
+.form {
+    margin-left: 25px;
 }
 
-.axis text {
-    font-family: sans-serif;
-    font-size: 11px;
+.form-fields {
+    padding-right: 10px;
+    display: inline-block;
 }
-
-/*.graph {*/
-/*    margin: 25px 25px;*/
-/*    padding: 25px 25px;*/
-/*    width: 500px;*/
-/*}*/
 
 .form-control {
-    width: 55px;
+    width: 75px;
 }
 
 .btn {
     background-color: black;
     color: white;
+    display: block;
 }
-
-/*.area {*/
-/*    fill: green;*/
-/*    stroke-width: 0;*/
-/*}*/
-
-/*.axis text {*/
-/*  font: 10px sans-serif;*/
-/*}*/
-
-/*.axis path,*/
-/*.axis line {*/
-/*  fill: none;*/
-/*  stroke: #000;*/
-/*  shape-rendering: crispEdges;*/
-/*}*/
-
-/*.legend {*/
-/*    font-size: 14px;*/
-/*    font-weight: bold;*/
-/*  }*/
-
-/*rect {*/
-/*    stroke-width: 2;*/
-/*  }*/

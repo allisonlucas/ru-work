@@ -4,7 +4,6 @@
     
   function chartController () {
     var c = this
-    console.log('Chart Controller Running!!!!!')
     // ==================================================
     // D3 CODE TO POPULATE GRAPH
     // ==================================================
@@ -19,10 +18,10 @@
         idealTempMin: [140],
         idealTempMax: [160]
       }
-      // X scale will fit values from 0-10 within pixels 0-100
+      // X scale
       var xRange = d3.scale.linear().domain([d3.min(lineData.day), d3.max(lineData.day)]).range([-5, width])
       // starting point is -5 so the first value doesn't show and slides off the edge as part of the transition
-      // Y scale will fit values from 0-10 within pixels 0-100
+      // Y scale
       var yRange = d3.scale.linear().domain([d3.min(lineData.temp), d3.max(lineData.temp)]).range([0, height])
       
       // Plot the temp line & append it
@@ -72,18 +71,18 @@
     // ==================================================
     // D3 CODE TO POPULATE DOUGHNUT
     // ==================================================
-    var w = 300, // width
-      h = 300, // height
-      r = 100, // radius
-      ir = 50,
+    var w = 375, // width
+      h = 175, // height
+      r = 150, // radius
+      ir = 75,
       pi = Math.PI,
-      color = d3.scale.category20c()
+      color = ['#2ca02c', '#8c564b']
       
     c.data = [{
-      'label': 'green',
+      'label': 'GREEN',
       'value': [40]
     }, {
-      'label': 'brown',
+      'label': 'BROWN',
       'value': [60]
     }]
     
@@ -159,8 +158,9 @@
       
     arcs.append('svg:path')
       .attr('fill', function (d, i) {
-        return color(i)
+        return color[i]
       })
+      .attr('opacity', '0.75')
       .attr('d', arc)
       
     arcs.append('svg:text')
@@ -168,6 +168,8 @@
         return 'translate(' + arc.centroid(d) + ')'
       })
       .attr('text-anchor', 'middle')
+      // .attr('padding', '10')
+      .attr('fill', '#ffffff')
       .text(function (d, i) {
         return c.data[i].label
       })
