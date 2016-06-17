@@ -6,7 +6,7 @@
     var c = this
     
     // ==================================================
-    // D3 CODE TO POPULATE GRAPH
+    // D3 CODE TO POPULATE TEMP GRAPH
     // ==================================================
     function displayGraph (id, width, height, margin, interpolation, updateDelay) {
       // create an SVG element inside the #graph div that fills 100% of the div
@@ -19,23 +19,25 @@
       }
 
       function draw () {
-        var graph = d3.select(".temp-graph").append('svg:svg').attr("id", "graph").attr('width', '500').attr('height', '250').attr('margin', '45')
+        var graph = d3.select(".temp-graph").append('svg:svg').attr("id", "graph").attr('width', '550').attr('height', '250').attr('margin', '45')
         
           // X scale
         var xRange = d3.scale.linear().domain([d3.min(lineData.day), d3.max(lineData.day)]).range([margin, width - margin])
-        // starting point is -5 so the first value doesn't show and slides off the edge as part of the transition
         // Y scale
         var yRange = d3.scale.linear().domain([d3.min(lineData.temp) - 20, d3.max(lineData.temp) + 20]).range([height - margin, margin])
         
         // Plot the x and y axes & append
         var xAxis = d3.svg.axis()
           .scale(xRange)
-          .tickSize(0)
+          .orient('bottom')
+          .ticks(14)
+          .tickSize(-(d3.max(lineData.temp) + 20), 0, 0)
+          
         var yAxis = d3.svg.axis()
           .scale(yRange)
           .ticks(6)
-          .tickSize(0)
           .orient('left')
+          .tickSize(-(width - margin * 2), 0, 0)
    
         graph.append('svg:g')
           .attr('class', 'x-axis')
@@ -55,7 +57,23 @@
             .attr("transform", "rotate(-90)")
             .attr("y", 0 - 35)
             .attr("x",0 - ((height + margin) / 2))
-            .text("Temperature")
+            .text("Temperature (F)")
+           
+        // Add the ideal temp area rectangle
+        graph.append('svg:rect')
+          .attr('x', xRange(lineData.day[0]))
+          .attr('y', yRange(lineData.idealTempMax[0]))
+          .attr('width', xRange(d3.max(lineData.day)) - margin)
+          .attr('height', (yRange(lineData.idealTempMin[0]) - yRange(lineData.idealTempMax[0])))
+          .attr('class', 'area')
+          .attr('opacity', 0.5)
+        
+        graph.append('svg:g')
+          .append("text")
+          .attr("x", width)
+          .attr("y",  yRange(lineData.idealTempMax[0]) + 30)
+          .style("text-anchor", "middle")
+          .text("Ideal Range")
         
         // Plot the temp line & append it
         var lineFunc = d3.svg.line()
@@ -77,11 +95,12 @@
       draw()
       
       setInterval(function () {
-        
+        var j = lineData.day[13] + 1
+        console.log(j)
+        lineData.day.push(j)
+        console.log(lineData.day)
         lineData.day.shift() // remove the first element of the array
-        var j = lineData.day.length
-        
-        lineData.day.push(j++)
+        console.log(lineData.day)
         var v = lineData.temp.shift() // remove the first element of the array
         lineData.temp.push(v) // add a new element to the array (we're just taking the number we just shifted off the front and appending to the end)
         d3.select('#graph').remove()
@@ -90,6 +109,109 @@
     }
       
     displayGraph('#graph', 500, 250, 45, 'basis', 1500)
+        // ==================================================
+    // D3 CODE TO POPULATE HUMIDITY GRAPH
+    // ==================================================
+    function displayHumidityGraph (id, width, height, margin, interpolation, updateDelay) {
+      // create an SVG element inside the #graph div that fills 100% of the div
+      var lineData = {
+        day: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+        humidity: [10, 10, 11, 13, 15, 16, 15, 14, 17, 19, 20, 19, 17, 17],
+        idealHumidityMin: [40],
+        idealHumidityMax: [60]
+      }
+
+      function drawHumidity () {
+        var humidityGraph = d3.select(".humidity-graph").append('svg:svg').attr("id", "humidityGraph").attr('width', '550').attr('height', '250').attr('margin', '45')
+        
+          // X scale
+        var xRange = d3.scale.linear().domain([d3.min(lineData.day), d3.max(lineData.day)]).range([margin, width - margin])
+        // Y scale
+        var yRange = d3.scale.linear().domain([1, d3.max(lineData.idealHumidityMax) + 10]).range([height - margin, margin])
+        
+        // Plot the x and y axes & append
+        var xAxis = d3.svg.axis()
+          .scale(xRange)
+          .orient('bottom')
+          .ticks(14)
+          .tickSize(-(height - 71), 0, 0)
+          
+        var yAxis = d3.svg.axis()
+          .scale(yRange)
+          .ticks(6)
+          .orient('left')
+          .tickSize(-(width - margin * 2), 0, 0)
+   
+        humidityGraph.append('svg:g')
+          .attr('class', 'x-axis')
+          .attr('transform', 'translate(0,' + (height - margin) + ')')
+          .call(xAxis)
+          .append("text")
+            .attr("x", width / 2 )
+            .attr("y",  margin)
+            .style("text-anchor", "middle")
+            .text("Date")
+   
+        humidityGraph.append('svg:g')
+          .attr('class', 'y-axis')
+          .attr('transform', 'translate(' + margin + ',0)')
+          .call(yAxis)
+          .append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 0 - 35)
+            .attr("x",0 - ((height + margin) / 2))
+            .text("Humidity (%)")
+           
+        // Add the ideal temp area rectangle
+        humidityGraph.append('svg:rect')
+          .attr('x', xRange(lineData.day[0]))
+          .attr('y', yRange(lineData.idealHumidityMax[0]))
+          .attr('width', xRange(d3.max(lineData.day)) - margin)
+          .attr('height', (yRange(lineData.idealHumidityMin[0]) - yRange(lineData.idealHumidityMax[0])))
+          .attr('class', 'area')
+          .attr('opacity', 0.5)
+        
+        humidityGraph.append('svg:g')
+          .append("text")
+          .attr("x", width)
+          .attr("y",  yRange(lineData.idealHumidityMax[0]) + 30)
+          .style("text-anchor", "middle")
+          .text("Ideal Range")
+        
+        // Plot the temp line & append it
+        var lineFunc = d3.svg.line()
+          .x(function (d, i) {
+            return xRange(lineData.day[i])
+          })
+          .y(function (d, i) {
+            return yRange(lineData.humidity[i])
+          })
+          .interpolate(interpolation)
+          
+        humidityGraph.append('svg:path')
+          .attr('d', lineFunc(lineData.humidity))
+        
+        humidityGraph.selectAll('path')
+            .data([lineData.humidity]) // set the new data
+            .attr('d', lineFunc(lineData.humidity)) // apply the new data values
+      }
+      drawHumidity()
+      
+      setInterval(function () {
+        var j = lineData.day[13] + 1
+        console.log(j)
+        lineData.day.push(j)
+        console.log(lineData.day)
+        lineData.day.shift() // remove the first element of the array
+        console.log(lineData.day)
+        var v = lineData.humidity.shift() // remove the first element of the array
+        lineData.humidity.push(v) // add a new element to the array (we're just taking the number we just shifted off the front and appending to the end)
+        d3.select('#humidityGraph').remove()
+        drawHumidity()
+      }, updateDelay)
+    }
+      
+    displayHumidityGraph('#humidityGraph', 500, 250, 45, 'basis', 1500)
     // ==================================================
     // D3 CODE TO POPULATE DOUGHNUT
     // ==================================================
@@ -158,53 +280,61 @@
       
       d3.select('#donut').remove()
       drawDoughnut()
+      
+      c.showMoreBrown = false
+      c.showLessBrown = false
+      c.showFunc = function() {
+        if (percentBrown > 60) {
+            c.showLessBrown = true
+        } else if (percentBrown < 40) {
+            c.showMoreBrown = true
+        }
+      }
     }
     function drawDoughnut() {
-
-    var vis = d3.select(".svg-div")
-      .append("svg")
-      .attr("id", "donut")
-      .data([c.data])
-      .attr('width', w)
-      .attr('height', h)
-      .append('svg:g')
-      .attr('transform', 'translate(' + r + ',' + r + ')')
-      
-    var arc = d3.svg.arc()
-      .outerRadius(r)
-      .innerRadius(ir)
-      
-    var pie = d3.layout.pie()
-      .value(function (d) {
-        return d.value
-      })
-      .startAngle(-90 * (pi / 180))
-      .endAngle(90 * (pi / 180))
-      
-    var arcs = vis.selectAll('g.slice')
-      .data(pie)
-      .enter()
-      .append('svg:g')
-      .attr('class', 'slice')
-      
-    arcs.append('svg:path')
-      .attr('fill', function (d, i) {
-        return color[i]
-      })
-      .attr('opacity', '0.75')
-      .attr('d', arc)
-      
-    arcs.append('svg:text')
-      .attr('transform', function (d) {
-        return 'translate(' + arc.centroid(d) + ')'
-      })
-      .attr('text-anchor', 'middle')
-      .attr('fill', '#ffffff')
-      .text(function (d, i) {
-        return c.data[i].label
-      })
+      var vis = d3.select(".svg-div")
+        .append("svg")
+        .attr("id", "donut")
+        .data([c.data])
+        .attr('width', w)
+        .attr('height', h)
+        .append('svg:g')
+        .attr('transform', 'translate(' + r + ',' + r + ')')
+        
+      var arc = d3.svg.arc()
+        .outerRadius(r)
+        .innerRadius(ir)
+        
+      var pie = d3.layout.pie()
+        .value(function (d) {
+          return d.value
+        })
+        .startAngle(-90 * (pi / 180))
+        .endAngle(90 * (pi / 180))
+        
+      var arcs = vis.selectAll('g.slice')
+        .data(pie)
+        .enter()
+        .append('svg:g')
+        .attr('class', 'slice')
+        
+      arcs.append('svg:path')
+        .attr('fill', function (d, i) {
+          return color[i]
+        })
+        .attr('opacity', '0.75')
+        .attr('d', arc)
+        
+      arcs.append('svg:text')
+        .attr('transform', function (d) {
+          return 'translate(' + arc.centroid(d) + ')'
+        })
+        .attr('text-anchor', 'middle')
+        .attr('fill', '#ffffff')
+        .text(function (d, i) {
+          return c.data[i].label
+        })
     }
     drawDoughnut()
-    
   }
 }())
