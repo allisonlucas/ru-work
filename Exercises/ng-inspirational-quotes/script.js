@@ -60,4 +60,24 @@ function quotesCtrl() {
     qCtrl.delete = function(index) {
         qCtrl.formArr.splice(index, 1)
     }
+    
+    // CREATE STAR RATING OBJ ARRAY
+    
+    qCtrl.starArray = [
+        {
+            image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Stj%C3%A4rna.svg/2000px-Stj%C3%A4rna.svg.png",
+            rating:
+        },
+        {
+            image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Stj%C3%A4rna.svg/2000px-Stj%C3%A4rna.svg.png",
+            rating:
+        },
+        {
+            image:
+        }
+        ]
+    
+    qCtrl.rate = function() {
+        
+    }
 }

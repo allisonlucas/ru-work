@@ -20,7 +20,7 @@
       <script type="text/javascript" src="script.js"></script>
 
   </head>
-  <body ng-controller="quotesCtrl as qCtrl">
+  <body class="star-grey" ng-controller="quotesCtrl as qCtrl">
     
     <form ng-submit="qCtrl.submit()" ng-show="qCtrl.show" class="form">
         <h3>Enter your quote below</h3>
@@ -46,7 +46,7 @@
         <ul class="profile-info">
             <li ng-repeat="submit in qCtrl.formArr">{{submit.quote}} - <a href="quotes.js">{{submit.author}}</a>
                 <button ng-click="qCtrl.delete($index)">Delete</button>
-                <button>Rate</button>
+                <button ng-click="qCtrl.rate">Rate</button>
             </li>
         </ul>
     </div>
