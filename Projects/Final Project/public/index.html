@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html ng-app='CompostIt'>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" />
+    <title>CompostSmart</title>
+
+    <!-- Link to my CSS file -->
+    <link rel="stylesheet" href="main.css" type="text/css" />
+
+    <!-- Link to my jQuery file -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"> -->
+
+    <!-- Optional theme -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous"> -->
+
+
+    <!-- Latest compiled and minified JavaScript -->
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular.js"></script>
+
+    <!-- Link to D3 -->
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.js"></script>
+
+    <!-- Link to ui-router -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.0/angular-ui-router.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <nav id="nav-color" class="red lighten-1">
+            <div role="navigation">
+                <a ui-sref="home" id="logo-container" class="brand-logo">Compost Smart</a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a ui-sref="tracker">Tracker</a></li>
+                    <li><a ui-sref="compost-this">Compost This</a></li>
+                    <li><a href="collapsible.html">The Basics</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="wrapper" ng-controller="homeCtrl as hCtrl"></div>
+        <div class="wrapper" ng-controller="listCtrl as lCtrl"></div>
+        <div class="wrapper" ng-controller="chartCtrl as c"></div>
+        <ui-view></ui-view>
+    </main>
+
+        <footer class="page-footer teal">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Company Bio</h5>
+                <p class="grey-text text-lighten-4">We are a team of compost enthusiasts. We love composting because it helps the environment and our gardens!</p>
+
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            Made by <a class="brown-text text-lighten-3" href="http://compostit.com">CompostIT</a>
+            </div>
+          </div>
+        </footer>
+
+        <!--  Scripts-->
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="js/materialize.js"></script>
+        <script src="js/init.js"></script>
+        <script type="text/javascript" src="script.js"></script>
+  </body>
+</html>
